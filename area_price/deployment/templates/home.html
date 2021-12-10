@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block form %}
+<div class="testbox">
+    <form action="/" method="POST">
+        <div class="banner">
+         
+        </div>
+        <br />
+
+        <div class="colums m-auto row row-cols-2" style="width:350px">
+            <div class="item col">
+                <label for="fname"> AREA<span>*</span></label>
+                <input id="fname" class="form-control" type="number" name="area" style="height: 31px; text-align: center;"
+                    require value="{{inputs.area}}"/>
+            </div>
+            <div class="item col">
+                <p style="margin:0px">TOWN</p>
+                <select class="form-control" name="town">
+                    
+                    {% if inputs.town =='' %}
+                        <option selected value="" >Choisir ... </option>
+                        <option value="monroe township">monroe township</option>
+                        <option value="west windsor">west windsor</option>
+                        <option value="robinsville">robinsville</option>
+                    {% elif inputs.town =='monroe township' %}
+                        <option value="" >Choisir ... </option>
+                        <option selected value="monroe township">monroe township</option>
+                        <option value="west windsor">west windsor</option>
+                        <option value="robinsville">robinsville</option>
+                    {% elif inputs.town =='west windsor' %}
+                        <option value="" >Choisir ... </option>
+                        <option  value="monroe township">west windsor"</option>
+                        <option selected value="west windsor">west windsor</option>
+                        <option value="robinsville">robinsville</option>
+                    {% else %}
+                        <option value="" >Choisir ... </option>
+                        <option value="monroe township">monroe township</option>
+                        <option value="west windsor">west windsor</option>
+                        <option selected  value="robinsville">robinsville</option>    
+                    {% endif %}
+                    
+
+                </select>
+            </div>
+            <div class="btn-block col-12 text-align-center">
+                <button type="submit" href="/" class="btn btn-outline-success">Demander une prediction</button>
+                <div class="text-danger">
+                    {{error}}
+                </div>
+                <div class="display-6">
+                    {{resp}}
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}
